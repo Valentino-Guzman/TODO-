@@ -6,7 +6,7 @@ const app = express();
 app.disable('x-powered-by')
 
 app.use(express.json())
-app.use(userRouter)
+app.use('/api',userRouter)
 app.use(taskRouter)
 
 app.use((req,res,next) => {
