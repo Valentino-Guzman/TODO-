@@ -3,12 +3,12 @@ import { getTasks, createTasks, updateTasks, deleteTasks } from '../controllers/
 
 const router = Router()
  
-router.get('/tareas', getTasks)
+router.get('api/tareas', getTasks)
 
-router.post('/tareas', createTasks)
+router.post('api/tareas', createTasks)
   
-router.put('/tareas', updateTasks)
+router.put('api/tareas', updateTasks)
   
-router.delete('/tareas', deleteTasks)
+router.delete('api/tareas', deleteTasks)
   
 export default router
