@@ -8,11 +8,12 @@ export const getUsers = async (req, res) => {
         res.json(rows)
      
     } catch (error) {  
+        console.error(error);
         return res.status(500).json({
-            mesagge:'error'
-        })
+            mesagge:'Error al obtener usuarios'
+        });
     }
-}
+};
 //obtener usuario por id
 export const getUsersById = async (req, res) => {
     try {
@@ -24,9 +25,9 @@ export const getUsersById = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             mesagge:'Algo fue mal'
-        })
+        });
     }
-}
+};
 
 //crear usuario
 export const createUsers = async (req, res) => {
