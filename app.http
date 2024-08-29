@@ -1,0 +1,9 @@
+###
+POST http://localhost:1234/usuarios
+Content-Type: application/json
+
+{
+    "nombre": "el papu",
+    "apellido": "sadasdsddasd",
+    "email": "apapupau3@gmail.com"
+  }
