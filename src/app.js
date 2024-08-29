@@ -1,7 +1,6 @@
 import express from 'express';
 import taskRouter from './routes/tasks.router.js'
 import userRouter from './routes/users.router.js'
-import { pool } from './config/database.js';
 
 const app = express();
 app.disable('x-powered-by')
