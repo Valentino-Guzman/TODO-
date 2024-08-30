@@ -1,18 +1,7 @@
 import { pool } from "../config/database.js"
 import { validateTask } from "../../schemas/tasks.schemas.js"
 
-const ACCEPT_ORIGINS = [
-    'http://localhost:8080',
-    'http://localhost:1234',
-    'http://localhost:4200',
-    'http://localhost:4200/add'
-  ]
-
 export const getTasks = async (req, res) => {
-    const origin = req.header('origin')
-    if (ACCEPT_ORIGINS.includes(origin) || !origin) {
-        res.header('Access-Control-Allow-Origin', origin)
-    }
     const [result] = await pool.query('SELECT id, titulo, descripcion, completada FROM tareas;')
     res.json(result)
 }
@@ -24,14 +13,7 @@ export const getTasksById = async (req, res) => {
 }
 
 export const createTasks = async (req, res) => {
-    const origin = req.header('origin')
-    if (ACCEPT_ORIGINS.includes(origin) || !origin) {
-        res.header('Access-Control-Allow-Origin', origin)
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
-    }
-
     const result = validateTask(req.body)
-
     if(result.error) {
         return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
@@ -60,11 +42,6 @@ export const updateTasks = async (req, res) => {
 }
 
 export const deleteTasks = async (req, res) => {
-    const origin = req.header('origin')
-    if (ACCEPT_ORIGINS.includes(origin) || !origin) {
-        res.header('Access-Control-Allow-Origin', origin)
-    }
-    
     const { id } = req.params
     const [result] = await pool.query('DELETE FROM tareas WHERE id = ?', [id])
     if (result.affectedRows <= 0) {
