@@ -1,6 +1,11 @@
 import { pool } from "../config/database.js"
 import { validateTask } from "../../schemas/tasks.schemas.js"
-import ACCEPT_ORIGINS from '../config/cors.config.js'
+
+const ACCEPT_ORIGINS = [
+    'http://localhost:8080',
+    'http://localhost:1234',
+    'http://localhost:4200'
+  ]
 
 export const getTasks = async (req, res) => {
     const origin = req.header('origin')
