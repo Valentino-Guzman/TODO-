@@ -26,6 +26,7 @@ export const createTasks = async (req, res) => {
     const origin = req.header('origin')
     if (ACCEPT_ORIGINS.includes(origin) || !origin) {
         res.header('Access-Control-Allow-Origin', origin)
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
     }
 
     const result = validateTask(req.body)
