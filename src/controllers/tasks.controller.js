@@ -23,6 +23,11 @@ export const getTasksById = async (req, res) => {
 }
 
 export const createTasks = async (req, res) => {
+    const origin = req.header('origin')
+    if (ACCEPT_ORIGINS.includes(origin) || !origin) {
+        res.header('Access-Control-Allow-Origin', origin)
+    }
+
     const result = validateTask(req.body)
 
     if(result.error) {
@@ -54,6 +59,11 @@ export const updateTasks = async (req, res) => {
 }
 
 export const deleteTasks = async (req, res) => {
+    const origin = req.header('origin')
+    if (ACCEPT_ORIGINS.includes(origin) || !origin) {
+        res.header('Access-Control-Allow-Origin', origin)
+    }
+    
     const { id } = req.params
     const [result] = await pool.query('DELETE FROM tareas WHERE id = ?', [id])
     if (result.affectedRows <= 0) {
