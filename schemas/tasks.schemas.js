@@ -8,11 +8,7 @@ const taskSchema = z.object({
     descripcion: z.string({
         invalid_type_error: 'La descripcion tiene que ser un string',
         required_error: 'La descripcion es requerida'
-    }),
-    completada: z.number({
-        invalid_type_error: 'Complete tiene que ser un numero',
-        required_error: 'Complete es requerido'
-    }),
+    })
 })
 
 export function validateTask(input) {
