@@ -1,9 +1,11 @@
 ###
-POST http://localhost:1234/usuarios
+POST http://localhost:1234/tareas
 Content-Type: application/json
 
 {
-    "nombre": "el papu",
-    "apellido": "sadasdsddasd",
-    "email": "apapupau3@gmail.com"
-  }
+    "titulo": "el papusadas",
+    "descripcion": "bsadasdsado",
+    "completada": 1
+}
+###
+GET  http://localhost:1234/tareas
