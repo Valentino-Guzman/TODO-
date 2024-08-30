@@ -34,13 +34,12 @@ export const createTasks = async (req, res) => {
         return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
     
-    const { titulo, descripcion, completada } = result.data
-    const [rows] = await pool.query('INSERT INTO tareas (titulo, descripcion, completada) VALUES (?, ?, ?, ?)', [ titulo, descripcion, completada])
+    const { titulo, descripcion } = result.data
+    const [rows] = await pool.query('INSERT INTO tareas (titulo, descripcion) VALUES (?, ?)', [ titulo, descripcion])
     res.status(201).json({
         id: rows.insertId,
         titulo,  
-        descripcion, 
-        completada
+        descripcion,
     }) 
 }
 
