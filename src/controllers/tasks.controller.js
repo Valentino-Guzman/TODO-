@@ -1,7 +1,12 @@
 import { pool } from "../config/database.js"
 import { validateTask } from "../../schemas/tasks.schemas.js"
+import ACCEPT_ORIGINS from '../config/cors.config.js'
 
 export const getTasks = async (req, res) => {
+    const origin = req.header('origin')
+    if (ACCEPT_ORIGINS.includes(origin) || !origin) {
+        res.header('Access-Control-Allow-Origin', origin)
+    }
     const [result] = await pool.query('SELECT id, titulo, descripcion, completada FROM tareas;')
     res.json(result)
 }

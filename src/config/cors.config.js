@@ -1,6 +1,5 @@
-export const corsOptions = {
-    origin: 'http://localhost:4200', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],     
-    allowedHeaders: ['Content-Type', 'Authorization'], 
-    credentials: true 
-  };
+export const ACCEPT_ORIGINS = [
+  'http://localhost:8080',
+  'http://localhost:1234',
+  'http://localhost:4200'
+]
